@@ -2,7 +2,8 @@ import requests
 import requests_cache
 
 
-class RequestsApi:
+class RequestsApi():
+    """Standard REST API Client"""
     def __init__(self, base_url, **kwargs):
         self.base_url = base_url
         self.session = requests.Session()
@@ -34,6 +35,7 @@ class RequestsApi:
 
 
 class RequestsCachedApi(RequestsApi):
+    """API Client with caching"""
     def __init__(self, *args, **kw):
         super().__init__(*args, **kw)
         self.session = requests_cache.CachedSession()
